@@ -2,42 +2,35 @@ from pyrogram.types import InlineKeyboardButton
 
 
 class Data:
-    generate_single_button = [InlineKeyboardButton("🔥 Start Generating Session 🔥", callback_data="generate")]
+    generate_single_button = [InlineKeyboardButton("Generate Session", callback_data="generate")]
 
     home_buttons = [
         generate_single_button,
-        [InlineKeyboardButton(text="🏠 Return Home 🏠", callback_data="home")]
+        [InlineKeyboardButton(text="Home", callback_data="home")]
     ]
 
     generate_button = [generate_single_button]
 
     buttons = [
         generate_single_button,
-        [InlineKeyboardButton("✨ Bot Status and More Bots ✨", url="https://t.me/StarkBots/7")],
         [
-            InlineKeyboardButton("How to Use ❔", callback_data="help"),
-            InlineKeyboardButton("🎪 About 🎪", callback_data="about")
+            InlineKeyboardButton("How to Use", callback_data="help"),
+            InlineKeyboardButton("About", callback_data="about")
         ],
-        [InlineKeyboardButton("♥ More Amazing bots ♥", url="https://t.me/StarkBots")],
     ]
 
     START = """
-Hey {}
+Hi {}
 
 Welcome to {}
 
-If you don't trust this bot, 
-1) stop reading this message
-2) delete this chat
+I generate Pyrogram and Telethon string sessions.
 
-Still reading?
-You can use me to generate pyrogram (even version 2) and telethon string session. Use below buttons to learn more !
-
-By @StarkBots
+Only generate sessions for accounts or bots you own.
     """
 
     HELP = """
-✨ **Available Commands** ✨
+**Commands**
 
 /about - About The Bot
 /help - This Message
@@ -48,15 +41,13 @@ By @StarkBots
 """
 
     ABOUT = """
-**About This Bot** 
+**SayaStringSession**
 
-Telegram Bot to generate Pyrogram and Telethon string session by @StarkBots
+Telegram bot to generate Pyrogram and Telethon string sessions.
 
-Source Code : [Click Here](https://github.com/StarkBotsIndustries/StringSessionBot)
+Source Code : [Click Here](https://github.com/shnwazdeveloper/SayaStringSession)
 
-Framework : [Pyrogram](https://docs.pyrogram.org)
+Framework : [Pyrogram](https://docs.pyrogram.org) and [Telethon](https://docs.telethon.dev)
 
 Language : [Python](https://www.python.org)
-
-Developer : @StarkAgent
     """

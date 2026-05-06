@@ -1,8 +1,9 @@
-import traceback
+import logging
+
 from data import Data
 from pyrogram import Client
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup
-from StringSessionBot.generate import generate_session, ask_ques, buttons_ques
+from SayaStringSession.generate import generate_session, ask_ques, buttons_ques
 
 
 # Callbacks
@@ -11,7 +12,7 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
     user = await bot.get_me()
     # user_id = callback_query.from_user.id
     mention = user.mention
-    query = callback_query.data.lower()
+    query = (callback_query.data or "").lower()
     if query.startswith("home"):
         if query == 'home':
             chat_id = callback_query.from_user.id
@@ -48,7 +49,7 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
     elif query.startswith("pyrogram") or query.startswith("telethon"):
         try:
             if query == "pyrogram":
-                #await callback_query.answer("Please note that the new type of string sessions may not work in all bots, i.e, only the bots that have been updated to pyrogram v2 will work!", show_alert=True)
+                # await callback_query.answer("Pyrogram v2 sessions may only work in bots updated for v2.", show_alert=True)
                 await generate_session(bot, callback_query.message)
                 """
             # Maybe in future it'll come back.
@@ -66,12 +67,10 @@ async def _callbacks(bot: Client, callback_query: CallbackQuery):
                 await callback_query.answer()
                 await generate_session(bot, callback_query.message, telethon=True)
         except Exception as e:
-            print(traceback.format_exc())
-            print(e)
+            logging.exception("Session generation failed")
             await callback_query.message.reply(ERROR_MESSAGE.format(str(e)))
 
 
 ERROR_MESSAGE = "Oops! An exception occurred! \n\n**Error** : {} " \
-            "\n\nPlease visit @StarkBotsChat if this message doesn't contain any " \
-            "sensitive information and you if want to report this as " \
-            "this error message is not being logged by us!"
+            "\n\nRestart with /generate. Do not share this error publicly if it contains " \
+            "private account, token, or phone details."

@@ -2,10 +2,7 @@ from env import DATABASE_URL
 
 from sqlalchemy import Column, BigInteger
 
-if DATABASE_URL !="":
-    from StringSessionBot.database import BASE, SESSION
-else:
-    BASE = object
+from SayaStringSession.database import BASE, SESSION
 
 
 class Users(BASE):
@@ -23,13 +20,14 @@ class Users(BASE):
     #     return "<User {} {} {} ({})>".format(self.thumbnail, self.thumbnail_status, self.video_to, self.user_id)
 
 
-if DATABASE_URL !="":
+if DATABASE_URL and SESSION is not None:
     Users.__table__.create(checkfirst=True)
 
 
 async def num_users():
-    if DATABASE_URL !="":
-        try:
-            return SESSION.query(Users).count()
-        finally:
-            SESSION.close()
+    if not DATABASE_URL or SESSION is None:
+        return 0
+    try:
+        return SESSION.query(Users).count()
+    finally:
+        SESSION.close()

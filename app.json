@@ -1,6 +1,6 @@
 {
-  "name": "Pyrogram String Session Generator",
-  "description": "Telegram bot to generate pyrogram string session",
+  "name": "SayaStringSession",
+  "description": "Telegram bot to generate Pyrogram and Telethon string sessions",
   "logo": "https://telegra.ph/file/7ec22c82f580a334dd13e.jpg",
   "keywords": [
     "telegram",
@@ -25,7 +25,7 @@
          "plan": "heroku-postgresql"
       }
    ],
-  "repository": "https://github.com/StarkBotsIndustries/StringSessionBot",
+  "repository": "https://github.com/shnwazdeveloper/SayaStringSession",
   "env": {
     "ENVIRONMENT": {
       "description": "Don't change ANYTHING.",
@@ -49,6 +49,11 @@
     },
     "MUST_JOIN": {
       "description": "Add username/id of a channel/group",
+      "required": false,
+      "value": ""
+    },
+    "OWNER_ID": {
+      "description": "Telegram user ID allowed to use /stats",
       "required": false,
       "value": ""
     }
