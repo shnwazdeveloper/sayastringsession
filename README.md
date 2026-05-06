@@ -58,7 +58,7 @@ python bot.py
 - `API_HASH` - Telegram API hash from [my.telegram.org](https://my.telegram.org/auth)
 - `BOT_TOKEN` - Bot token from [@BotFather](https://t.me/BotFather)
 - `MUST_JOIN` - Optional channel or group username/ID users must join before using the bot
-- `DATABASE_URL` - Optional PostgreSQL URL for user stats
+- `DATABASE_URL` - Optional PostgreSQL URL for user stats. Leave it empty if you do not use stats.
 - `OWNER_ID` - Optional Telegram user ID allowed to run `/stats`
 
 ## Notes
