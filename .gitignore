@@ -2,5 +2,7 @@
 __pycache__/
 .gitattributes
 *.pyc
+*.session
+*.session-journal
 test.py
 .env

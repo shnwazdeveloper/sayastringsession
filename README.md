@@ -65,6 +65,8 @@ python bot.py
 
 Only generate string sessions for accounts or bots you own. Treat generated sessions like passwords.
 
+If Railway logs show `FLOOD_WAIT`, leave the deployment running. SayaStringSession will wait for Telegram's cooldown and retry automatically.
+
 ## Credits
 
 - [Dan Tès](https://github.com/delivrance) for Pyrogram
